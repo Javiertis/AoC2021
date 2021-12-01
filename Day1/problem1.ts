@@ -1,8 +1,10 @@
-const inputFile = await Deno.readTextFile("./Day1/input.txt");
+import { readInputFileSplitLines } from "../utils/utils.ts";
 
-export const input: number[] = inputFile.split('\n').map(n => parseInt(n));
+const inputFile = await readInputFileSplitLines(2021, 1);
 
-export const greaterThanPreviousReduce = (prev: number, val: number, index: number, self: number[]): number => {
+const input: number[] = inputFile.map(n => parseInt(n));
+
+const greaterThanPreviousReduce = (prev: number, val: number, index: number, self: number[]): number => {
     if (index < self.length && val < self[index + 1]) {
         return ++prev;
     }
